@@ -4,7 +4,7 @@ namespace TP_MODUL4_103022430006
 {
     public class DoorMachine
     {
-        public enum State { Terkunci, Terbuka }; // Definisi status [cite: 10037]
+        public enum State { Terkunci, Terbuka };
         public State currentState = State.Terkunci;
 
         public void PerubahanState(string command)

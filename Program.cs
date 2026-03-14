@@ -6,30 +6,29 @@ namespace TP_MODUL4_103022430006
     {
         static void Main(string[] args)
         {
-            // --- TUGAS 1: Implementasi Table-Driven (Kode Pos) ---
-            Console.WriteLine("=== Output Tugas Table-Driven ===");
+            Console.WriteLine("=== Output Tugas Table-Driven (Daftar Kode Pos) ===");
             KodePos kPos = new KodePos();
 
-            // Contoh mencari kode pos kelurahan Batununggal
-            string kelurahan = "Batununggal";
-            int hasilKodePos = kPos.getKodePos(kelurahan);
+            string[] daftarKelurahan = {
+                "Batununggal", "Kujangsari", "Mengger", "Wates", "Cijaura",
+                "Jatisari", "Margasari", "Sekejati", "Kebonwaru", "Maleer", "Samoja"
+            };
 
-            Console.WriteLine($"Kelurahan: {kelurahan}");
-            Console.WriteLine($"Kode Pos : {hasilKodePos}");
+            Console.WriteLine("{0,-15} | {1,-10}", "Kelurahan", "Kode Pos");
+            Console.WriteLine("----------------------------");
+
+            foreach (string kelurahan in daftarKelurahan)
+            {
+                int kodePos = kPos.getKodePos(kelurahan);
+                Console.WriteLine("{0,-15} | {1,-10}", kelurahan, kodePos);
+            }
             Console.WriteLine();
 
-            // --- TUGAS 2: Implementasi State-Based (Door Machine) ---
-            Console.WriteLine("=== Output Tugas State-Based ===");
-            DoorMachine pintu = new DoorMachine(); // State awal: Terkunci
-
-            // Simulasi perubahan state berdasarkan command
-            // 1. Mencoba membuka pintu
+            Console.WriteLine("=== Output Tugas State-Based (Door Machine) ===");
+            DoorMachine pintu = new DoorMachine();
             pintu.PerubahanState("BukaPintu");
-
-            // 2. Mencoba mengunci pintu kembali
             pintu.PerubahanState("KunciPintu");
 
-            // Agar console tidak langsung tertutup
             Console.WriteLine("\nTekan tombol apa saja untuk keluar...");
             Console.ReadKey();
         }
