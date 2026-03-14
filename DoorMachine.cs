@@ -1,35 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-public class DoorMachine
+namespace TP_MODUL4_103022430006
 {
-    // Definisi State
-    public enum State { Terkunci, Terbuka };
-    public State currentState;
-
-    public DoorMachine()
+    public class DoorMachine
     {
-        // Asumsikan state awal adalah Terkunci sesuai instruksi
-        currentState = State.Terkunci;
-        Console.WriteLine("Pintu terkunci");
-    }
+        public enum State { Terkunci, Terbuka }; // Definisi status [cite: 10037]
+        public State currentState = State.Terkunci;
 
-    public void PerubahanState(string command)
-    {
-        if (currentState == State.Terkunci && command == "BukaPintu")
+        public void PerubahanState(string command)
         {
-            currentState = State.Terbuka;
-            Console.WriteLine("Pintu tidak terkunci");
+            if (currentState == State.Terkunci && command == "BukaPintu")
+            {
+                currentState = State.Terbuka;
+                Console.WriteLine("Pintu tidak terkunci");
+            }
+            else if (currentState == State.Terbuka && command == "KunciPintu")
+            {
+                currentState = State.Terkunci;
+                Console.WriteLine("Pintu terkunci");
+            }
         }
-        else if (currentState == State.Terbuka && command == "KunciPintu")
-        {
-            currentState = State.Terkunci;
-            Console.WriteLine("Pintu terkunci");
-        }
-        // Jika command sama dengan state sekarang (misal BukaPintu saat sudah Terbuka), 
-        // state tetap sama sesuai diagram.
     }
 }

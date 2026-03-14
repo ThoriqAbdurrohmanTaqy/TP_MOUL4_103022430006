@@ -1,17 +1,37 @@
-﻿class Program
+﻿using System;
+
+namespace TP_MODUL4_103022430006
 {
-    static void Main(string[] args)
+    class Program
     {
-        // Simulasi Tabel-Driven (Bagian C)
-        KodePos kPos = new KodePos();
-        string kel = "Batununggal";
-        Console.WriteLine($"Kode Pos {kel}: " + kPos.getKodePos(kel));
+        static void Main(string[] args)
+        {
+            // --- TUGAS 1: Implementasi Table-Driven (Kode Pos) ---
+            Console.WriteLine("=== Output Tugas Table-Driven ===");
+            KodePos kPos = new KodePos();
 
-        Console.WriteLine("--------------------------------");
+            // Contoh mencari kode pos kelurahan Batununggal
+            string kelurahan = "Batununggal";
+            int hasilKodePos = kPos.getKodePos(kelurahan);
 
-        // Simulasi State-Based (Bagian E)
-        DoorMachine pintu = new DoorMachine();
-        pintu.PerubahanState("BukaPintu");  // Output: Pintu tidak terkunci
-        pintu.PerubahanState("KunciPintu"); // Output: Pintu terkunci
+            Console.WriteLine($"Kelurahan: {kelurahan}");
+            Console.WriteLine($"Kode Pos : {hasilKodePos}");
+            Console.WriteLine();
+
+            // --- TUGAS 2: Implementasi State-Based (Door Machine) ---
+            Console.WriteLine("=== Output Tugas State-Based ===");
+            DoorMachine pintu = new DoorMachine(); // State awal: Terkunci
+
+            // Simulasi perubahan state berdasarkan command
+            // 1. Mencoba membuka pintu
+            pintu.PerubahanState("BukaPintu");
+
+            // 2. Mencoba mengunci pintu kembali
+            pintu.PerubahanState("KunciPintu");
+
+            // Agar console tidak langsung tertutup
+            Console.WriteLine("\nTekan tombol apa saja untuk keluar...");
+            Console.ReadKey();
+        }
     }
 }
